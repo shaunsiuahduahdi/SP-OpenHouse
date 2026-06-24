@@ -1,0 +1,458 @@
+/* ════════════════════════════════════════════════════════════
+   RED LIGHT GREEN LIGHT - STYLES
+════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+
+.rlgl-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* ════════════════════════════════════════════════════════════
+   VIDEO FEED
+════════════════════════════════════════════════════════════ */
+.video-feed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1); /* Mirror */
+  z-index: 1;
+}
+
+/* ════════════════════════════════════════════════════════════
+   BACKGROUND OVERLAY (tint over video)
+════════════════════════════════════════════════════════════ */
+.rlgl-background {
+  position: absolute;
+  inset: 0;
+  transition: background-color 0.3s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.rlgl-background.green {
+  background: rgba(0, 100, 0, 0.4);
+}
+
+.rlgl-background.red {
+  background: rgba(150, 0, 0, 0.5);
+}
+
+/* ════════════════════════════════════════════════════════════
+   TRAFFIC LIGHT
+════════════════════════════════════════════════════════════ */
+.traffic-light {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  border-radius: 20px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 4px solid #444;
+  z-index: 100;
+}
+
+.traffic-light .light {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.traffic-light .light.red {
+  background: #3a1111;
+  box-shadow: none;
+}
+
+.traffic-light .light.red.active {
+  background: #ff3333;
+  box-shadow: 0 0 30px #ff3333, 0 0 60px #ff3333;
+}
+
+.traffic-light .light.green {
+  background: #113a11;
+  box-shadow: none;
+}
+
+.traffic-light .light.green.active {
+  background: #33ff33;
+  box-shadow: 0 0 30px #33ff33, 0 0 60px #33ff33;
+}
+
+/* ════════════════════════════════════════════════════════════
+   PROGRESS BAR
+════════════════════════════════════════════════════════════ */
+.progress-container {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 600px;
+  z-index: 100;
+}
+
+.progress-bar {
+  height: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  overflow: hidden;
+  border: 3px solid #fff;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffcc00, #ff9900);
+  border-radius: 12px;
+  transition: width 0.2s ease;
+  box-shadow: 0 0 20px rgba(255, 200, 0, 0.5);
+}
+
+.progress-text {
+  text-align: center;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 800;
+  margin-top: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ════════════════════════════════════════════════════════════
+   RUNNING INDICATOR
+════════════════════════════════════════════════════════════ */
+.running-indicator {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+  z-index: 100;
+  transition: all 0.2s ease;
+}
+
+.running-indicator.active {
+  background: rgba(0, 255, 0, 0.3);
+  color: #33ff33;
+  transform: translateX(-50%) scale(1.1);
+}
+
+/* ════════════════════════════════════════════════════════════
+   QUESTION OVERLAY
+════════════════════════════════════════════════════════════ */
+.question-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.question-box {
+  background: rgba(20, 20, 40, 0.95);
+  border-radius: 30px;
+  padding: 40px;
+  max-width: 90%;
+  width: 800px;
+  text-align: center;
+  border: 4px solid #ffcc00;
+  box-shadow: 0 0 50px rgba(255, 200, 0, 0.3);
+}
+
+.question-text {
+  color: #fff;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  margin-bottom: 40px;
+  line-height: 1.4;
+}
+
+.answers {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.answer {
+  position: relative;
+  flex: 1;
+  max-width: 300px;
+  padding: 30px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.answer.selecting {
+  border-color: #ffcc00;
+  background: rgba(255, 200, 0, 0.2);
+}
+
+.answer-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 255, 0, 0.5), transparent);
+  transition: height 0.1s ease;
+}
+
+.hand-icon {
+  font-size: 50px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.answer-text {
+  display: block;
+  color: #fff;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.hand-label {
+  display: block;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.instruction {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   FEEDBACK
+════════════════════════════════════════════════════════════ */
+.feedback-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+}
+
+.feedback-overlay.correct {
+  background: rgba(0, 200, 0, 0.4);
+}
+
+.feedback-overlay.wrong {
+  background: rgba(200, 0, 0, 0.4);
+}
+
+.feedback-text {
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  animation: feedbackPop 0.3s ease;
+}
+
+@keyframes feedbackPop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ════════════════════════════════════════════════════════════
+   START SCREEN
+════════════════════════════════════════════════════════════ */
+.start-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  z-index: 500;
+}
+
+.game-title {
+  font-family: 'Russo One', sans-serif;
+  font-size: clamp(2rem, 8vw, 4rem);
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255, 200, 0, 0.5);
+  margin-bottom: 10px;
+}
+
+.game-subtitle {
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  color: #ffcc00;
+  margin-bottom: 40px;
+}
+
+.instructions {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px 40px;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  max-width: 500px;
+}
+
+.instructions p {
+  color: #fff;
+  font-size: 18px;
+  margin: 15px 0;
+  text-align: left;
+}
+
+.start-button {
+  padding: 20px 60px;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  background: linear-gradient(135deg, #ffcc00, #ff9900);
+  color: #1a1a2e;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.start-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(255, 200, 0, 0.5);
+}
+
+.back-button {
+  padding: 15px 30px;
+  font-size: 16px;
+  font-family: 'Outfit', sans-serif;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ════════════════════════════════════════════════════════════
+   COUNTDOWN
+════════════════════════════════════════════════════════════ */
+.countdown-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 500;
+}
+
+.countdown-number {
+  font-size: clamp(8rem, 30vw, 15rem);
+  font-weight: 800;
+  color: #ffcc00;
+  text-shadow: 0 0 50px rgba(255, 200, 0, 0.5);
+  animation: countdownPulse 1s ease infinite;
+}
+
+@keyframes countdownPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* ════════════════════════════════════════════════════════════
+   WIN SCREEN
+════════════════════════════════════════════════════════════ */
+.win-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a4a1a 0%, #2d6a2d 50%, #1a4a1a 100%);
+  z-index: 500;
+}
+
+.win-text {
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 0 30px rgba(255, 255, 0, 0.5);
+  margin-bottom: 20px;
+  animation: winPulse 0.5s ease infinite alternate;
+}
+
+@keyframes winPulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+.win-overlay p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   LOADING
+════════════════════════════════════════════════════════════ */
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a2e;
+  z-index: 600;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid #333;
+  border-top: 5px solid #ffcc00;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-overlay p {
+  color: #fff;
+  font-size: 18px;
+}
+
+.loading-overlay .error {
+  color: #ff6666;
+  margin-top: 10px;
+}

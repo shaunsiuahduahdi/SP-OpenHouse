@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700;800;900&family=Share+Tech+Mono&display=swap');
+
+.osu{position:relative;width:100vw;height:100vh;background:#111;overflow:hidden;font-family:'Barlow',sans-serif}
+.osu-vid-bg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;transform:scaleX(-1);filter:brightness(0.35) saturate(1.2)}
+.osu-bg-overlay{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:2;opacity:0.55;pointer-events:none}
+.osu-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:5}
+
+/* HUD */
+.osu-hud{position:absolute;top:0;left:0;right:0;z-index:100;pointer-events:none}
+.osu-hp-wrap{position:absolute;top:6px;left:10px;right:45%;display:flex;align-items:center;gap:6px}
+.osu-hp-label{font-family:'Bebas Neue';font-size:15px;color:rgba(255,255,255,0.6);letter-spacing:2px}
+.osu-hp-track{flex:1;height:12px;background:rgba(0,0,0,0.5);border-radius:2px;overflow:hidden;border:1px solid rgba(255,255,255,0.08)}
+.osu-hp-fill{height:100%;border-radius:1px;transition:width 0.15s;background:linear-gradient(90deg,#ff2244,#ff8844,#ffcc44,#44ff88)}
+.osu-score-wrap{position:absolute;top:6px;right:14px;text-align:right}
+.osu-score{font-family:'Bebas Neue';font-size:44px;color:#fff;letter-spacing:3px;line-height:1;text-shadow:0 2px 8px rgba(0,0,0,0.5)}
+.osu-acc{font-family:'Share Tech Mono';font-size:16px;color:rgba(255,255,255,0.55);letter-spacing:2px}
+.osu-combo{position:absolute;bottom:28px;left:28px;z-index:100;pointer-events:none;display:flex;align-items:baseline}
+.osu-combo-num{font-family:'Bebas Neue';font-size:88px;color:#fff;line-height:1;text-shadow:0 3px 14px rgba(0,0,0,0.5)}
+.osu-combo-x{font-family:'Share Tech Mono';font-size:22px;color:rgba(255,255,255,0.35);margin-left:3px;margin-bottom:14px}
+
+/* Overlay */
+.osu-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:200;background:radial-gradient(ellipse at center,rgba(15,5,30,0.94),rgba(5,2,15,0.98))}
+.osu-spin{width:44px;height:44px;border:3px solid rgba(255,255,255,0.05);border-top-color:#ff4466;border-right-color:#4488ff;border-radius:50%;animation:osuspin 0.6s linear infinite;margin-bottom:14px}
+@keyframes osuspin{to{transform:rotate(360deg)}}
+.osu-lt{font-family:'Share Tech Mono';font-size:14px;color:rgba(255,255,255,0.25)}
+
+/* Countdown */
+.osu-cd{font-family:'Bebas Neue';font-size:200px;color:#fff;line-height:1;text-shadow:0 0 50px rgba(255,100,150,0.3);animation:cdPop 0.4s ease}
+.osu-cd-sub{font-family:'Share Tech Mono';font-size:18px;color:rgba(255,255,255,0.25);letter-spacing:5px;margin-top:8px}
+@keyframes cdPop{0%{transform:scale(1.5);opacity:0}100%{transform:scale(1);opacity:1}}
+
+/* Menu */
+.osu-menu{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px}
+.osu-title{font-family:'Bebas Neue';font-size:110px;line-height:1;letter-spacing:5px;background:linear-gradient(135deg,#ff4466,#ff8844,#ffcc44,#44ff88,#4488ff,#aa44ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 25px rgba(255,68,102,0.35))}
+.osu-title span{-webkit-text-fill-color:#fff;font-size:70px;filter:drop-shadow(0 0 15px rgba(255,255,255,0.15))}
+.osu-sub{font-family:'Share Tech Mono';font-size:15px;color:rgba(255,255,255,0.25);letter-spacing:4px;margin-top:-8px}
+.osu-song-info{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:10px;padding:18px 36px}
+.osu-song-title{font-family:'Bebas Neue';font-size:28px;color:#fff;letter-spacing:3px}
+.osu-song-artist{font-family:'Share Tech Mono';font-size:13px;color:rgba(255,255,255,0.35);margin-top:3px}
+.osu-song-meta{font-family:'Share Tech Mono';font-size:11px;color:rgba(255,255,255,0.18);margin-top:6px}
+.osu-hand-legend{display:flex;gap:28px;font-size:13px;color:rgba(255,255,255,0.45);font-family:'Share Tech Mono'}
+.osu-hand-l,.osu-hand-r{display:flex;align-items:center;gap:7px}
+.osu-dot-l{width:12px;height:12px;border-radius:50%;background:#ff4466;display:inline-block}
+.osu-dot-r{width:12px;height:12px;border-radius:50%;background:#4488ff;display:inline-block}
+.osu-start{padding:14px 70px;font-family:'Bebas Neue';font-size:30px;color:#fff;letter-spacing:5px;background:linear-gradient(135deg,#ff4466,#ff6622);border:none;border-radius:6px;cursor:pointer;box-shadow:0 5px 25px rgba(255,68,102,0.25);transition:all 0.2s}
+.osu-start:hover{transform:translateY(-2px);box-shadow:0 10px 35px rgba(255,68,102,0.4)}
+.osu-back{padding:8px 35px;font-family:'Share Tech Mono';font-size:13px;color:rgba(255,255,255,0.35);background:none;border:1px solid rgba(255,255,255,0.08);border-radius:5px;cursor:pointer}
+.osu-back:hover{color:#fff;border-color:rgba(255,255,255,0.25)}
+
+/* Results */
+.osu-results{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px}
+.osu-rank{font-family:'Bebas Neue';font-size:160px;line-height:1;text-shadow:0 0 50px currentColor;animation:rankPulse 1s ease-in-out infinite alternate}
+@keyframes rankPulse{0%{transform:scale(1)}100%{transform:scale(1.04)}}
+.osu-results-title{font-family:'Bebas Neue';font-size:24px;color:rgba(255,255,255,0.5);letter-spacing:3px;margin-top:-8px}
+.osu-results-grid{display:flex;gap:20px}
+.osu-rg-item{display:flex;flex-direction:column;align-items:center;min-width:50px}
+.osu-rg-val{font-family:'Bebas Neue';font-size:36px;line-height:1}
+.osu-rg-lbl{font-family:'Share Tech Mono';font-size:11px;color:rgba(255,255,255,0.25);margin-top:2px}
+.osu-results-stats{font-family:'Share Tech Mono';font-size:13px;color:rgba(255,255,255,0.4);display:flex;gap:20px}
+.osu-results-stats strong{color:#fff}
+
+@media(max-width:900px){.osu-title{font-size:68px}.osu-title span{font-size:42px}.osu-score{font-size:28px}.osu-combo-num{font-size:52px}.osu-rank{font-size:100px}.osu-start{padding:10px 45px;font-size:22px}}

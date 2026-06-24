@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap');
+
+.ftc * { box-sizing: border-box; margin: 0; padding: 0; }
+.ftc { font-family: 'Outfit', sans-serif; }
+
+.ftc .game-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #0a0a0a;
+  overflow: hidden;
+}
+
+.ftc .video-hidden {
+  position: absolute;
+  top: -9999px; left: -9999px;
+  width: 1px; height: 1px; opacity: 0;
+}
+
+.ftc .game-canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 10;
+}
+
+/* ── HUD ── */
+
+.ftc .hud {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  padding: 20px 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 100;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.25) 70%, transparent 100%);
+}
+
+.ftc .hud-left { display: flex; flex-direction: column; gap: 4px; }
+
+.ftc .hud-score {
+  font-size: 60px;
+  font-weight: 900;
+  color: #4ade80;
+  line-height: 1;
+}
+
+.ftc .hud-score-label {
+  font-size: 13px; font-weight: 700;
+  color: rgba(74, 222, 128, 0.5);
+  text-transform: uppercase; letter-spacing: 3px;
+}
+
+.ftc .hud-center {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 6px;
+}
+
+.ftc .hud-status {
+  font-size: 16px; font-weight: 700;
+  padding: 7px 22px; border-radius: 30px; letter-spacing: 1px;
+}
+
+.ftc .hud-status.stable {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+.ftc .hud-status.warning {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  animation: ftc-blink 0.8s ease-in-out infinite;
+}
+
+.ftc .hud-status.critical {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  animation: ftc-blink 0.35s ease-in-out infinite;
+}
+
+@keyframes ftc-blink {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+.ftc .hud-timer { font-size: 26px; font-weight: 800; color: #fff; }
+
+.ftc .hud-right {
+  display: flex; flex-direction: column;
+  align-items: flex-end; gap: 4px;
+}
+
+.ftc .hud-overload-label {
+  font-size: 12px; font-weight: 700;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase; letter-spacing: 2px;
+}
+
+.ftc .hud-overload-bar {
+  width: 170px; height: 13px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 7px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.ftc .hud-overload-fill {
+  height: 100%; border-radius: 7px;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.ftc .hud-fixes {
+  font-size: 15px; font-weight: 700;
+  color: rgba(255,255,255,0.45); margin-top: 3px;
+}
+
+/* ── Overlays ── */
+
+.ftc .overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  background: rgba(10, 10, 10, 0.96);
+  z-index: 200; padding: 40px;
+}
+
+.ftc .spinner {
+  width: 56px; height: 56px;
+  border: 5px solid rgba(74, 222, 128, 0.12);
+  border-top-color: #4ade80;
+  border-radius: 50%;
+  animation: ftc-spin 0.8s linear infinite;
+  margin-bottom: 18px;
+}
+
+@keyframes ftc-spin { to { transform: rotate(360deg); } }
+
+.ftc .loading-text {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.55); font-weight: 600;
+}
+
+/* ── Start ── */
+
+.ftc .start-content {
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center; gap: 22px;
+}
+
+.ftc .start-title {
+  font-size: 68px; font-weight: 900; color: #fff; line-height: 1.1;
+}
+
+.ftc .start-title span { color: #4ade80; }
+
+.ftc .start-subtitle {
+  font-size: 20px; font-weight: 600;
+  color: rgba(255,255,255,0.4);
+  max-width: 480px; line-height: 1.6;
+}
+
+.ftc .start-instructions {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px; padding: 22px 32px;
+  max-width: 500px; text-align: left;
+}
+
+.ftc .start-instructions p {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.95rem; margin: 9px 0; line-height: 1.5;
+}
+
+.ftc .start-btn {
+  margin-top: 8px; padding: 20px 90px;
+  font-size: 30px; font-weight: 900;
+  font-family: 'Outfit', sans-serif; color: #fff;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  border: none; border-radius: 60px; cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 8px 28px rgba(34, 197, 94, 0.25);
+  letter-spacing: 3px;
+}
+
+.ftc .start-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(34, 197, 94, 0.4);
+}
+
+/* ── Countdown ── */
+
+.ftc .countdown-num {
+  font-size: 220px; font-weight: 900;
+  color: #4ade80; line-height: 1;
+  text-shadow: 0 0 60px rgba(74, 222, 128, 0.35);
+  animation: ftc-pop 0.4s ease;
+}
+
+@keyframes ftc-pop {
+  0% { transform: scale(1.4); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.ftc .countdown-label {
+  font-size: 1.5rem;
+  color: rgba(255,255,255,0.5);
+  margin-top: 14px; font-weight: 600;
+}
+
+/* ── Game Over ── */
+
+.ftc .results-content {
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center; gap: 22px;
+}
+
+.ftc .results-title { font-size: 52px; font-weight: 900; color: #ef4444; }
+
+.ftc .results-subtitle {
+  font-size: 18px; color: rgba(255,255,255,0.35); font-weight: 600;
+}
+
+.ftc .final-score-value {
+  font-size: 110px; font-weight: 900;
+  color: #4ade80; line-height: 1;
+}
+
+.ftc .final-score-label {
+  font-size: 16px; font-weight: 700;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase; letter-spacing: 6px; margin-top: 6px;
+}
+
+.ftc .final-stats { display: flex; gap: 26px; margin-top: 8px; }
+
+.ftc .final-stat {
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px; padding: 12px 22px; text-align: center;
+}
+
+.ftc .final-stat-value { font-size: 26px; font-weight: 800; color: #fff; }
+
+.ftc .final-stat-label {
+  font-size: 10px; font-weight: 600;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase; letter-spacing: 1px; margin-top: 2px;
+}
+
+.ftc .play-again-btn {
+  margin-top: 8px; padding: 18px 80px;
+  font-size: 26px; font-weight: 900;
+  font-family: 'Outfit', sans-serif; color: #fff;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  border: none; border-radius: 60px; cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 8px 28px rgba(34, 197, 94, 0.2);
+  letter-spacing: 2px;
+}
+
+.ftc .play-again-btn:hover { transform: translateY(-3px); }
+
+@media (max-width: 900px) {
+  .ftc .hud { padding: 12px 18px; }
+  .ftc .hud-score { font-size: 42px; }
+  .ftc .hud-timer { font-size: 20px; }
+  .ftc .hud-overload-bar { width: 120px; }
+  .ftc .start-title { font-size: 44px; }
+  .ftc .countdown-num { font-size: 150px; }
+  .ftc .final-score-value { font-size: 72px; }
+}

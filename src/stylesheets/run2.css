@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700;800;900&family=Share+Tech+Mono&display=swap');
+.rm *{box-sizing:border-box;margin:0;padding:0}.rm{font-family:'Barlow',sans-serif}
+.rm .gc{position:relative;width:100vw;height:100vh;background:#080c14;overflow:hidden}
+.rm .vh{position:absolute;top:-9999px;left:-9999px;width:1px;height:1px;opacity:0}
+.rm .three-mount{position:absolute;top:0;left:0;width:100%;height:100%;z-index:5}
+.rm .three-mount canvas{display:block;width:100%;height:100%;z-index:8}
+.rm .ov-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:10;pointer-events:none}
+.rm .jumba-sprite{position:absolute;z-index:9;pointer-events:none;display:none;object-fit:contain;transition:none}
+.rm .sec-guard-sprite{position:absolute;z-index:11;pointer-events:none;display:none;object-fit:contain;transition:none}
+.rm .av-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:8;pointer-events:none}
+
+/* HUD — clean commercial, BIGGER */
+.rm .hud{position:absolute;top:0;left:0;right:0;padding:18px 28px;display:flex;justify-content:space-between;align-items:center;z-index:100;pointer-events:none;background:linear-gradient(to bottom,rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.05) 90%,transparent 100%)}
+.rm .hud-l{display:flex;flex-direction:column;gap:4px}.rm .hud-lives{display:flex;gap:10px;font-size:48px}
+.rm .hud-h{font-size:48px;transition:all 0.2s;filter:drop-shadow(0 0 8px rgba(255,50,80,0.5))}.rm .hud-h.x{opacity:0.15;transform:scale(0.5);filter:none}
+.rm .hud-c{position:absolute;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}
+.rm .hud-dist{font-family:'Bebas Neue';font-size:80px;color:#fff;line-height:1;letter-spacing:4px;text-shadow:0 0 14px rgba(0,220,255,0.25)}
+.rm .hud-dl{font-size:13px;font-weight:700;color:rgba(0,220,255,0.4);text-transform:uppercase;letter-spacing:8px;font-family:'Share Tech Mono'}
+
+/* Battery — BIGGER, centered */
+.rm .battery-wrap{position:absolute;top:120px;left:50%;transform:translateX(-50%);z-index:100;pointer-events:none;display:flex;align-items:center;gap:0}
+.rm .battery-body{width:520px;height:46px;border:3px solid rgba(0,220,255,0.3);border-radius:5px;overflow:hidden;position:relative;background:rgba(0,10,20,0.6);backdrop-filter:blur(4px)}
+.rm .battery-fill{height:100%;border-radius:3px;transition:width 0.3s;background:linear-gradient(90deg,#00aacc,#00ddff,#44eeff)}
+.rm .battery-tip{width:16px;height:26px;background:rgba(0,220,255,0.3);border-radius:0 4px 4px 0;margin-left:-1px}
+.rm .battery-pct{font-family:'Bebas Neue';font-size:22px;color:rgba(255,255,255,0.8);position:absolute;width:100%;text-align:center;line-height:46px;letter-spacing:4px}
+
+/* Speed bar — BIGGER */
+.rm .speed-bar-wrap{position:absolute;left:18px;top:50%;transform:translateY(-50%);z-index:100;pointer-events:none;display:flex;flex-direction:column;align-items:center;gap:8px}
+.rm .speed-label{font-size:13px;font-weight:700;color:rgba(0,220,255,0.25);text-transform:uppercase;letter-spacing:3px;writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);font-family:'Share Tech Mono'}
+.rm .speed-track{width:30px;height:320px;background:rgba(0,220,255,0.04);border-radius:15px;overflow:hidden;position:relative;border:2px solid rgba(0,220,255,0.1)}
+.rm .speed-fill{position:absolute;bottom:0;left:0;width:100%;border-radius:15px;transition:height 0.12s}
+.rm .speed-val{font-family:'Bebas Neue';font-size:28px;color:#00ddff;letter-spacing:2px}
+
+/* Banner — BIGGER text */
+.rm .banner{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:100;pointer-events:none;background:rgba(0,8,16,0.9);padding:16px 48px;border-radius:8px;max-width:90%;border:1px solid rgba(0,220,255,0.15);backdrop-filter:blur(8px)}
+.rm .banner.tri{border-color:rgba(0,180,255,0.35)}.rm .banner.pose{border-color:rgba(140,80,255,0.35)}.rm .banner.tech{border-color:rgba(0,220,255,0.35)}
+.rm .banner-t{font-family:'Share Tech Mono';font-size:32px;color:#fff;text-align:center;letter-spacing:3px}
+
+/* Flash */
+.rm .flash{position:absolute;inset:0;pointer-events:none;z-index:150;animation:rmfl 0.3s ease-out forwards}
+.rm .flash.ok{background:radial-gradient(ellipse at center,rgba(0,220,255,0.15) 0%,transparent 50%)}
+.rm .flash.no{background:radial-gradient(ellipse at center,rgba(255,50,80,0.2) 0%,transparent 50%)}
+@keyframes rmfl{0%{opacity:1}100%{opacity:0}}
+
+/* Overlays — clean dark */
+.rm .ov{height: 2000px;position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(6,10,18,0.97);z-index:200;padding:0px; transform:translateY(-440px);}
+.rm .spin{width:160px;height:160px;border:2px solid rgba(0,220,255,0.06);border-top-color:#00ddff;border-radius:50%;animation:rms 0.6s linear infinite;margin-bottom:10px}
+@keyframes rms{to{transform:rotate(360deg)}}.rm .lt{font-size:1.45rem;color:rgba(0,220,255,0.3);font-family:'Share Tech Mono'; transform: translate(4px,20px);}
+.rm .sc{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px}
+.rm .st{font-family:'Bebas Neue';font-size:180px;color:#00ddff;line-height:1;letter-spacing:7px}
+.rm .st span{color:#fff}
+.rm .ss{font-size:30px;font-weight:500;color:rgba(0,220,255,0.3);max-width:650px;line-height:1.5;font-family:'Share Tech Mono'}
+.rm .sb{margin-top:10px;padding:18px 90px;font-family:'Bebas Neue';font-size:38px;color:#080c14;letter-spacing:6px;background:linear-gradient(135deg,#00ccee,#00eeff);border:none;border-radius:5px;cursor:pointer;box-shadow:0 0 24px rgba(0,220,255,0.2);transition:all 0.2s}.rm .sb:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(0,220,255,0.35)}
+.rm .cdn{font-family:'Bebas Neue';font-size:180px;color:#00ddff;line-height:1;text-shadow:0 0 30px rgba(0,220,255,0.25);animation:rmp 0.3s ease}
+@keyframes rmp{0%{transform:scale(1.4);opacity:0}100%{transform:scale(1);opacity:1}}
+.rm .cdl{font-size:3rem;color:rgba(0,220,255,0.2);margin-top:8px;font-family:'Share Tech Mono'}
+
+/* Game Over — split layout */
+.rm .go-wrap{display:flex;gap:40px;align-items:flex-start;width:100%;max-width:1100px;padding:0 30px}
+.rm .go-left{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px}
+.rm .go-right{width:420px;flex-shrink:0;max-height:80vh;overflow-y:auto}
+.rm .got{font-family:'Bebas Neue';font-size:100px;letter-spacing:5px;color:#ff3355}.rm .got.w{color:#00ddff}
+.rm .gos{font-family:'Bebas Neue';font-size:120px;color:#00ddff;line-height:1;letter-spacing:4px}
+.rm .gol{font-size:28px;font-weight:800;color:rgba(0,220,255,0.25);text-transform:uppercase;letter-spacing:7px;font-family:'Share Tech Mono';margin-top:10px}
+.rm .gost{display:flex;gap:14px;margin-top:6px}
+.rm .gos2{background:rgba(0,220,255,0.03);border:1px solid rgba(0,220,255,0.08);border-radius:6px;padding:12px 24px;text-align:center}
+.rm .gosv{font-family:'Bebas Neue';font-size:28px;color:#00ddff;letter-spacing:1px}
+.rm .gosl{font-size:9px;font-weight:700;color:rgba(0,220,255,0.2);text-transform:uppercase;letter-spacing:2px;font-family:'Share Tech Mono'}
+.rm .gob{margin-top:10px;padding:12px 60px;font-family:'Bebas Neue';font-size:22px;color:#080c14;letter-spacing:4px;background:linear-gradient(135deg,#00ccee,#00eeff);border:none;border-radius:4px;cursor:pointer;box-shadow:0 0 14px rgba(0,220,255,0.12);transition:all 0.2s}.rm .gob:hover{transform:translateY(-2px)}
+.rm .lb-submit-area{margin-top:8px}
+
+/* Config panel — clean */
+.rm .cfg-panel{width:100%;max-width:800px;display:flex;flex-direction:column;gap:50px;background:rgba(0,220,255,0.02);border:1px solid rgba(0,220,255,0.08);border-radius:10px;padding:42px 34px; margin-bottom: 25px; margin-top: 25px;}
+.rm .cfg-row{display:flex;align-items:flex-start;gap:30px}
+.rm .cfg-label{font-family:'Share Tech Mono';font-size:40px;color:rgba(0,220,255,0.4);letter-spacing:3px;min-width:120px;padding-top:10px;}
+.rm .cfg-toggle{transform:translate(25px,-10px);display:flex;gap:0;border-radius:10px;overflow:hidden;border:1px solid rgba(0,220,255,0.12)}
+.rm .cfg-btn{font-family:'Share Tech Mono';font-size:40px;padding:10px 28px;background:transparent;color:rgba(0,220,255,0.3);border:none;cursor:pointer;letter-spacing:2px;transition:all 0.15s}
+.rm .cfg-btn.active{background:rgba(0,220,255,0.12);color:#00ddff}
+.rm .cfg-select{font-family:'Share Tech Mono';font-size:30px;padding:10px 18px;background:rgba(0,0,0,0.4);color:#00ddff;border:1px solid rgba(0,220,255,0.12);border-radius:5px;cursor:pointer;letter-spacing:1px;outline:none}
+.rm .cfg-select option{background:#080c14;color:#00ddff}
+.rm .cfg-checks{transform:translateX(50px);display:flex;flex-wrap:wrap;gap:18px 56px; max-width: 430px;}
+.rm .cfg-check{display:flex;align-items:center;gap:7px;cursor:pointer;font-family:'Share Tech Mono';font-size:28px;color:rgba(0,220,255,0.35)}
+.rm .cfg-check input{display:none}
+.rm .cfg-ck-box{width:18px;height:18px;border:2px solid rgba(0,220,255,0.18);border-radius:3px;position:relative;transition:all 0.15s}
+.rm .cfg-check input:checked~.cfg-ck-box{background:rgba(0,220,255,0.15);border-color:rgba(0,220,255,0.45)}
+.rm .cfg-check input:checked~.cfg-ck-box::after{content:'';position:absolute;left:4px;top:1px;width:6px;height:10px;border:solid #00ddff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.rm .cfg-check input:checked~span:last-child{color:#00ddff}
+
+/* Multiplayer */
+.rm .mp-section{margin-top:16px;text-align:center}
+.rm .mp-btns{display:flex;align-items:center;gap:14px;justify-content:center;flex-wrap:wrap}
+.rm .mp-btn{font-family:'Share Tech Mono';font-size:16px;padding:8px 22px;background:rgba(0,220,255,0.08);color:#00ddff;border:1px solid rgba(0,220,255,0.2);border-radius:4px;cursor:pointer;letter-spacing:2px;transition:all 0.15s}
+.rm .mp-btn:hover{background:rgba(0,220,255,0.15);border-color:rgba(0,220,255,0.4)}
+.rm .mp-btn.mp-cancel{color:#ff5566;border-color:rgba(255,80,100,0.2)}
+.rm .mp-btn.mp-cancel:hover{background:rgba(255,80,100,0.1)}
+.rm .mp-or{font-family:'Share Tech Mono';font-size:13px;color:rgba(255,255,255,0.15)}
+.rm .mp-join{display:flex;gap:6px;align-items:center}
+.rm .mp-code{font-family:'Share Tech Mono';font-size:20px;width:80px;text-align:center;padding:8px;background:rgba(0,0,0,0.4);color:#00ddff;border:1px solid rgba(0,220,255,0.2);border-radius:4px;letter-spacing:4px;outline:none}
+.rm .mp-code:focus{border-color:rgba(0,220,255,0.5)}
+.rm .mp-status{display:flex;flex-direction:column;align-items:center;gap:8px}
+.rm .mp-room{font-family:'Share Tech Mono';font-size:16px;color:rgba(255,255,255,0.4);letter-spacing:2px}
+.rm .mp-room span{font-size:28px;color:#00ddff;letter-spacing:6px;font-family:'Bebas Neue'}
+.rm .mp-connected{font-family:'Share Tech Mono';font-size:14px;color:#00ff88;letter-spacing:2px}
+.rm .mp-waiting{font-family:'Share Tech Mono';font-size:14px;color:rgba(255,255,255,0.25);letter-spacing:1px}
+.rm .mp-err{font-family:'Share Tech Mono';font-size:13px;color:#ff5566;letter-spacing:1px}
+.rm .mp-roles{margin-top:10px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.rm .mp-roles-title{font-family:'Bebas Neue';font-size:22px;color:rgba(255,255,255,0.4);letter-spacing:4px}
+.rm .mp-role-btns{display:flex;gap:12px}
+.rm .mp-role-btn{display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 28px;background:rgba(255,255,255,0.03);border:2px solid rgba(255,255,255,0.1);border-radius:8px;cursor:pointer;transition:all 0.15s}
+.rm .mp-role-btn:hover{background:rgba(255,255,255,0.06)}
+.rm .mp-role-atk{border-color:rgba(255,60,60,0.2)}.rm .mp-role-atk:hover{border-color:rgba(255,60,60,0.4);background:rgba(255,40,40,0.06)}
+.rm .mp-role-atk.active{border-color:rgba(255,60,60,0.7);background:rgba(255,30,30,0.15);box-shadow:0 0 16px rgba(255,50,50,0.2)}
+.rm .mp-role-def{border-color:rgba(0,180,255,0.2)}.rm .mp-role-def:hover{border-color:rgba(0,180,255,0.4);background:rgba(0,180,255,0.06)}
+.rm .mp-role-def.active{border-color:rgba(0,220,255,0.7);background:rgba(0,180,255,0.15);box-shadow:0 0 16px rgba(0,220,255,0.2)}
+.rm .mp-role-icon{font-size:32px}
+.rm .mp-role-name{font-family:'Bebas Neue';font-size:18px;letter-spacing:3px;color:rgba(255,255,255,0.7)}
+.rm .mp-role-atk.active .mp-role-name{color:#ff6666}
+.rm .mp-role-def.active .mp-role-name{color:#00ddff}
+.rm .mp-role-conflict{font-family:'Share Tech Mono';font-size:13px;color:#ff5566;letter-spacing:1px}
+.rm .mp-role-ready{font-family:'Share Tech Mono';font-size:14px;color:#00ff88;letter-spacing:2px}
+.rm .mp-role-wait{font-family:'Share Tech Mono';font-size:13px;color:rgba(255,255,255,0.25);letter-spacing:1px}
+/* Opponent bar */
+.rm .opp-bar{position:absolute;top:120px;right:18px;z-index:100;pointer-events:none;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.rm .opp-label{font-family:'Share Tech Mono';font-size:12px;color:rgba(255,100,100,0.6);letter-spacing:2px}
+.rm .opp-track{width:200px;height:8px;background:rgba(255,80,80,0.08);border-radius:4px;overflow:hidden;border:1px solid rgba(255,80,80,0.15)}
+.rm .opp-fill{height:100%;background:linear-gradient(90deg,#ff4466,#ff6688);border-radius:4px;transition:width 0.3s}
+.rm .opp-lives{font-size:14px;display:flex;gap:2px}
+
+/* Leaderboard */
+.rm .lb-section{width:100%;max-width:480px;margin-top:10px}
+.rm .lb-submit{display:flex;gap:8px;justify-content:center}
+.rm .lb-input{font-family:'Share Tech Mono';font-size:18px;padding:10px 16px;background:rgba(0,0,0,0.5);color:#00ddff;border:1px solid rgba(0,220,255,0.2);border-radius:4px;outline:none;width:200px;letter-spacing:1px}
+.rm .lb-input::placeholder{color:rgba(0,220,255,0.25)}
+.rm .lb-input:focus{border-color:rgba(0,220,255,0.5)}
+.rm .lb-btn{font-family:'Bebas Neue';font-size:20px;padding:10px 24px;color:#080c14;background:linear-gradient(135deg,#00ccee,#00eeff);border:none;border-radius:4px;cursor:pointer;letter-spacing:3px;transition:all 0.15s}
+.rm .lb-btn:hover{transform:translateY(-1px);box-shadow:0 0 16px rgba(0,220,255,0.3)}
+.rm .lb-done{font-family:'Share Tech Mono';font-size:16px;color:rgba(0,220,255,0.5);text-align:center;letter-spacing:2px}
+.rm .lb-board{margin-top:0;width:100%;display:flex;flex-direction:column;gap:8px;background:rgba(0,12,20,0.8);border:1px solid rgba(0,220,255,0.12);border-radius:12px;padding:20px 16px;backdrop-filter:blur(8px)}
+.rm .lb-title{font-family:'Bebas Neue';font-size:36px;color:#00ddff;text-align:center;letter-spacing:8px;margin-bottom:8px;text-shadow:0 0 18px rgba(0,220,255,0.3)}
+.rm .lb-row{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;background:rgba(0,220,255,0.04);border:1px solid rgba(0,220,255,0.08);transition:all 0.15s}
+.rm .lb-row:hover{background:rgba(0,220,255,0.07)}
+.rm .lb-row.lb-gold{background:linear-gradient(135deg,rgba(255,200,50,0.15),rgba(255,170,30,0.08));border-color:rgba(255,200,50,0.3)}
+.rm .lb-row.lb-silver{background:linear-gradient(135deg,rgba(180,220,255,0.12),rgba(140,180,220,0.06));border-color:rgba(180,220,255,0.25)}
+.rm .lb-row.lb-bronze{background:linear-gradient(135deg,rgba(255,150,100,0.12),rgba(220,120,80,0.06));border-color:rgba(255,150,100,0.2)}
+.rm .lb-badge{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:20px;flex-shrink:0;background:rgba(0,220,255,0.1);color:rgba(0,220,255,0.5);border:1px solid rgba(0,220,255,0.15)}
+.rm .lb-gold .lb-badge{background:linear-gradient(135deg,#ffcc33,#ff9900);color:#fff;border-color:#ffaa00;box-shadow:0 0 14px rgba(255,180,0,0.4)}
+.rm .lb-silver .lb-badge{background:linear-gradient(135deg,#c0d8f0,#8aaccc);color:#fff;border-color:#a0c0dd;box-shadow:0 0 10px rgba(160,200,240,0.3)}
+.rm .lb-bronze .lb-badge{background:linear-gradient(135deg,#e8a070,#cc7744);color:#fff;border-color:#cc8855;box-shadow:0 0 10px rgba(220,140,80,0.3)}
+.rm .lb-info{flex:1;overflow:hidden;min-width:0}
+.rm .lb-name{font-family:'Share Tech Mono';font-size:18px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rm .lb-gold .lb-name{color:#ffdd66}
+.rm .lb-silver .lb-name{color:#c8ddf0}
+.rm .lb-bronze .lb-name{color:#eeaa77}
+.rm .lb-stats{font-family:'Share Tech Mono';font-size:10px;color:rgba(255,255,255,0.25);letter-spacing:1px;margin-top:1px}
+.rm .lb-score{text-align:right;flex-shrink:0}
+.rm .lb-score-val{font-family:'Bebas Neue';font-size:26px;color:#00ddff;letter-spacing:1px}
+.rm .lb-gold .lb-score-val{color:#ffcc33}
+.rm .lb-silver .lb-score-val{color:#b0ccee}
+.rm .lb-bronze .lb-score-val{color:#dd9966}
+.rm .lb-score-lbl{font-family:'Share Tech Mono';font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:1px}
+
+@media(max-width:900px){.rm .go-wrap{flex-direction:column;align-items:center;gap:20px}.rm .go-right{width:100%;max-width:400px}.rm .got{font-size:50px}.rm .gos{font-size:60px}.rm .hud{padding:8px 10px}.rm .hud-dist{font-size:28px}.rm .hud-lives{font-size:20px}.rm .st{font-size:44px}.rm .cdn{font-size:140px}.rm .banner-t{font-size:16px}.rm .speed-track{height:120px}.rm .battery-body{width:160px;height:18px}.rm .cfg-panel{padding:12px 14px}.rm .cfg-row{flex-direction:column;gap:6px}.rm .cfg-label{min-width:0;padding-top:0}}
+
+/* Mode selection */
+.rm .mode-btns{display:flex;gap:24px;margin-top:10px}
+.rm .mode-btn{display:flex;flex-direction:column;align-items:center;gap:8px;padding:28px 48px;background:rgba(0,220,255,0.03);border:2px solid rgba(0,220,255,0.15);border-radius:12px;cursor:pointer;transition:all 0.15s}
+.rm .mode-btn:hover{background:rgba(0,220,255,0.08);border-color:rgba(0,220,255,0.35);transform:translateY(-2px)}
+.rm .mode-icon{font-size:48px}
+.rm .mode-label{font-family:'Bebas Neue';font-size:28px;color:#00ddff;letter-spacing:4px}
+/* Attacker battery */
+.rm .battery-body.atk{border-color:rgba(255,60,50,0.3)}
+.rm .battery-tip.atk{background:rgba(255,60,50,0.3)}
+/* Multiplayer game over center */
+.rm .goc{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px}

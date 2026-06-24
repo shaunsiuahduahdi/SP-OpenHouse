@@ -1,0 +1,292 @@
+/* ════════════════════════════════════════════════════════════
+   TRIVIA WALL - STYLES
+════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+
+.tw-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Outfit', sans-serif;
+  background: #0a0a1a;
+}
+
+.tw-video-hidden {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+}
+
+.tw-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ════════════════════════════════════════════════════════════
+   QUESTION BAR
+════════════════════════════════════════════════════════════ */
+.tw-question-bar {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  padding: 15px 40px;
+  border-radius: 15px;
+  border: 3px solid #fbbf24;
+  z-index: 100;
+  max-width: 80%;
+}
+
+.tw-question-text {
+  color: #fff;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* ════════════════════════════════════════════════════════════
+   HUD
+════════════════════════════════════════════════════════════ */
+.tw-hud {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 40px;
+  z-index: 100;
+}
+
+.tw-hud-item {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 25px;
+  border-radius: 12px;
+}
+
+.tw-hud-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.tw-hud-lives {
+  font-size: 1.8rem;
+  display: flex;
+  gap: 4px;
+}
+
+.tw-hud-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   SIDE LABELS
+════════════════════════════════════════════════════════════ */
+.tw-side-label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  z-index: 50;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+
+.tw-side-label.left {
+  left: 20px;
+  color: #4ade80;
+}
+
+.tw-side-label.right {
+  right: 20px;
+  color: #60a5fa;
+}
+
+/* ════════════════════════════════════════════════════════════
+   HOLE HINT (bottom center)
+════════════════════════════════════════════════════════════ */
+.tw-hole-hint {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.75);
+  color: #fbbf24;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 10px 30px;
+  border-radius: 12px;
+  border: 2px solid rgba(251, 191, 36, 0.3);
+  z-index: 100;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ════════════════════════════════════════════════════════════
+   OVERLAY
+════════════════════════════════════════════════════════════ */
+.tw-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  z-index: 500;
+}
+
+.tw-title {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+  text-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
+}
+
+.tw-subtitle {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  color: #fbbf24;
+  margin-bottom: 40px;
+}
+
+.tw-instructions {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 25px 40px;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  max-width: 560px;
+}
+
+.tw-instructions p {
+  color: #fff;
+  font-size: 1.1rem;
+  margin: 12px 0;
+  text-align: left;
+  line-height: 1.5;
+}
+
+/* ════════════════════════════════════════════════════════════
+   BUTTONS
+════════════════════════════════════════════════════════════ */
+.tw-button {
+  padding: 18px 50px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 10px;
+}
+
+.tw-button.play {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+}
+
+.tw-button.play:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
+}
+
+.tw-button.home {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.tw-button.home:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ════════════════════════════════════════════════════════════
+   COUNTDOWN
+════════════════════════════════════════════════════════════ */
+.tw-countdown {
+  font-size: clamp(8rem, 25vw, 15rem);
+  font-weight: 800;
+  color: #fbbf24;
+  text-shadow: 0 0 50px rgba(251, 191, 36, 0.5);
+  animation: countPulse 1s ease infinite;
+}
+
+.tw-countdown-text {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 20px;
+}
+
+@keyframes countPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* ════════════════════════════════════════════════════════════
+   GAME OVER
+════════════════════════════════════════════════════════════ */
+.tw-gameover-title {
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.tw-final-score {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px 60px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.tw-score-value {
+  font-size: 5rem;
+  font-weight: 800;
+  color: #fbbf24;
+}
+
+.tw-score-label {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   LOADING
+════════════════════════════════════════════════════════════ */
+.tw-spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  border-top: 5px solid #fbbf24;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.tw-loading-text {
+  color: #fff;
+  font-size: 1.2rem;
+}

@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap');
+
+.lfn * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.lfn {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.lfn .game-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #0d1117;
+  overflow: hidden;
+}
+
+.lfn .video-hidden {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.lfn .game-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+/* ====================================
+   HUD
+   ==================================== */
+
+.lfn .hud {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.lfn .hud-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lfn .lives {
+  display: flex;
+  gap: 8px;
+}
+
+.lfn .heart {
+  font-size: 38px;
+  transition: transform 0.2s ease;
+}
+
+.lfn .heart.active { color: #e74c3c; }
+.lfn .heart.lost { opacity: 0.25; transform: scale(0.8); }
+
+.lfn .score-display {
+  font-size: 72px;
+  font-weight: 900;
+  color: #ffd740;
+  line-height: 1;
+  text-shadow: 0 4px 20px rgba(255, 215, 64, 0.3);
+}
+
+.lfn .hud-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.lfn .step-badge {
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+  background: rgba(76, 175, 80, 0.3);
+  padding: 12px 30px;
+  border-radius: 50px;
+  border: 3px solid #4caf50;
+}
+
+.lfn .round-badge {
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ====================================
+   TARGET BANNER (top center)
+   ==================================== */
+
+.lfn .target-banner-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 18px 40px;
+  z-index: 100;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
+}
+
+.lfn .target-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.lfn .target-text {
+  font-size: 40px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 3px;
+}
+
+/* ====================================
+   CIRCUIT SCHEMATIC (canvas)
+   ==================================== */
+
+.lfn .circuit-schematic-canvas {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  z-index: 100;
+  pointer-events: none;
+  width: 320px;
+  height: 680px;
+  border-radius: 16px;
+}
+
+/* (circuit slots now drawn on canvas) */
+
+/* ====================================
+   OVERLAY BASE
+   ==================================== */
+
+.lfn .overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(13, 17, 23, 0.96);
+  z-index: 200;
+  padding: 40px;
+}
+
+/* ====================================
+   LOADING
+   ==================================== */
+
+.lfn .loading-spinner {
+  width: 90px;
+  height: 90px;
+  border: 10px solid rgba(255, 255, 255, 0.08);
+  border-top-color: #4caf50;
+  border-radius: 50%;
+  animation: lfn-spin 0.9s linear infinite;
+  margin-bottom: 30px;
+}
+
+@keyframes lfn-spin {
+  to { transform: rotate(360deg); }
+}
+
+.lfn .loading-text {
+  font-size: 32px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 700;
+}
+
+/* ====================================
+   START SCREEN
+   ==================================== */
+
+.lfn .start-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 25px;
+}
+
+.lfn .start-title {
+  font-size: 72px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.lfn .start-title span {
+  color: #ef5350;
+}
+
+.lfn .start-subtitle {
+  font-size: 26px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.45);
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+.lfn .start-button {
+  margin-top: 15px;
+  padding: 26px 120px;
+  font-size: 36px;
+  font-weight: 900;
+  font-family: 'Nunito', sans-serif;
+  color: #fff;
+  background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+  border: none;
+  border-radius: 70px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 10px 40px rgba(76, 175, 80, 0.35);
+  letter-spacing: 4px;
+}
+
+.lfn .start-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 50px rgba(76, 175, 80, 0.5);
+}
+
+/* ====================================
+   COUNTDOWN
+   ==================================== */
+
+.lfn .countdown {
+  font-size: 280px;
+  font-weight: 900;
+  color: #4caf50;
+  line-height: 1;
+  animation: count-pop 0.4s ease;
+  text-shadow: 0 0 100px rgba(76, 175, 80, 0.5);
+}
+
+@keyframes count-pop {
+  0% { transform: scale(1.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ====================================
+   RESULTS
+   ==================================== */
+
+.lfn .results-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 28px;
+}
+
+.lfn .results-title {
+  font-size: 68px;
+  font-weight: 900;
+  color: #fff;
+}
+
+.lfn .final-score-value {
+  font-size: 160px;
+  font-weight: 900;
+  color: #ffd740;
+  line-height: 1;
+  text-shadow: 0 10px 50px rgba(255, 215, 64, 0.4);
+}
+
+.lfn .final-score-label {
+  font-size: 30px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  margin-top: 10px;
+}
+
+.lfn .final-precision {
+  font-size: 32px;
+  font-weight: 700;
+  color: #4caf50;
+  padding: 14px 40px;
+  background: rgba(76, 175, 80, 0.12);
+  border-radius: 50px;
+}
+
+.lfn .final-round {
+  font-size: 28px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+}
+
+.lfn .play-again-btn {
+  margin-top: 10px;
+  padding: 24px 100px;
+  font-size: 34px;
+  font-weight: 900;
+  font-family: 'Nunito', sans-serif;
+  color: #fff;
+  background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+  border: none;
+  border-radius: 70px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 10px 40px rgba(76, 175, 80, 0.3);
+  letter-spacing: 3px;
+}
+
+.lfn .play-again-btn:hover {
+  transform: translateY(-4px);
+}
+
+/* ====================================
+   RESPONSIVE
+   ==================================== */
+
+@media (max-width: 900px) {
+  .lfn .hud { padding: 18px 24px; }
+  .lfn .heart { font-size: 38px; }
+  .lfn .score-display { font-size: 64px; }
+  .lfn .step-badge { font-size: 22px; padding: 10px 22px; }
+  .lfn .target-text { font-size: 28px; }
+  .lfn .start-title { font-size: 52px; }
+  .lfn .countdown { font-size: 200px; }
+  .lfn .final-score-value { font-size: 120px; }
+  .lfn .circuit-panel { min-width: 130px; padding: 12px 10px; }
+}

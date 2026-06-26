@@ -86,6 +86,7 @@ Vercel auto-builds on push. Make sure `index.html` includes the TensorFlow CDN s
 ## Related Repos
 
 - **Signaling Server:** [system-reboot-signaling](https://github.com/shaunsiuahduahdi/system-reboot-signaling.git) — WebSocket relay for WebRTC, deployed on Render
+- **Flutter Remote:** [SP-OpenHouse-Remote](https://github.com/shaunsiuahduahdi/SP-OpenHouse-Remote.git)
 
 
 ## Requirements
